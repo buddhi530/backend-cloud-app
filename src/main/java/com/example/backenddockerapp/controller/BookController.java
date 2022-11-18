@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:3000")
 @RequestMapping("/api/book")
 public class BookController {
 
@@ -29,5 +30,11 @@ public class BookController {
     public List<Customer> getAllBook(){
         List<Customer> allCustomer =  bookService.getAllBook();
         return allCustomer;
+    }
+
+    @DeleteMapping(path = "/delete/{id}")
+    public String deleteCustomer(@PathVariable int id) throws Exception {
+        boolean deleted=bookService.deleteCustomer(id);
+        return  "deleted!!!";
     }
 }

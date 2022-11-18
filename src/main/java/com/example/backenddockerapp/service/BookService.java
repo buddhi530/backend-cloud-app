@@ -9,4 +9,6 @@ public interface BookService {
     String saveBook(CustomerRequestModel customerRequestModel);
 
     List<Customer> getAllBook();
+
+    boolean deleteCustomer(int id) throws Exception;
 }

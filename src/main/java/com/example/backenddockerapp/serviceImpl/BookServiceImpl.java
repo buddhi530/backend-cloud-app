@@ -40,7 +40,7 @@ public class BookServiceImpl implements BookService {
         for(BookEntity c : getCustomers){
 
             Customer customerDTO = new Customer();
-            //customerDTO.setId(c.getId());
+            customerDTO.setId(c.getId());
             customerDTO.setTitle(c.getTitle());
             customerDTO.setAuthor(c.getAuthor());
             customerDTO.setCost(c.getCost());
@@ -48,6 +48,17 @@ public class BookServiceImpl implements BookService {
             customerDTOList.add(customerDTO);
         }
         return customerDTOList;
+    }
+
+    @Override
+    public boolean deleteCustomer(int id) throws Exception {
+        if(bookRepository.existsById(id)){
+            bookRepository.deleteById(id);
+        }else{
+            throw new Exception("not fount related to this book id");
+        }
+
+        return true;
     }
 
 }
